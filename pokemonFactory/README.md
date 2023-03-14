@@ -1,4 +1,7 @@
-### Prerrequisitos
+# PokemonFactory
+
+
+## Prerrequisitos
 
 1. npm: Node Package Manager. para instalar, actualizar e instalar paquetes y dependencias para proyectos en Node.js
     
@@ -17,7 +20,7 @@
     ```jsx
     npx -v
     ```
-### Creación del Proyecto:
+## Creación del Proyecto:
 
 1. Creación de la carpeta del proyecto.
     
