@@ -1,5 +1,19 @@
 # PokemonFactory
+Este código es un contrato inteligente escrito en Solidity, el lenguaje de programación utilizado para desarrollar contratos inteligentes en la red de Ethereum. El SmartContrat se llama PokemonFactory, El contrato define la estructura de un "Pokemon" que contiene:
 
+- id (unit) : identificador unico del poekmon.
+- name (name) : nombre del pokemon.
+
+### Variables Globales
+Además, tiene una matriz de Pokemons llamada "pokemons", que se inicializa como privada y no se puede acceder desde fuera del contrato
+
+También hay dos mapeos que se utilizan para asignar una dirección a cada Pokemon y un recuento de Pokemons por cada dirección.
+- pokemonToOwner: El dueño del pokemon. mapping
+- ownerPokemonCount: La cantidad de pokemones que tiene el propietario. mapping
+
+### Funciones
+- La función "createPokemon" se utiliza para agregar un nuevo Pokemon a la matriz "pokemons" y asignar el Pokemon al creador del mismo (la dirección que llama a la función).
+- La función "getAllPokemons" devuelve la matriz completa de todos los Pokemons creados.
 
 ## Prerrequisitos
 
