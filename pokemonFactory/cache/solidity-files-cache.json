@@ -1,0 +1,40 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "D:\\DESARROLLO\\XOLIT\\Learning Path\\git\\ETH-2023\\ETHDeveloperProgramV2\\pokemonFactory\\contracts\\PokemonFactory.sol": {
+      "lastModificationDate": 1678941547737,
+      "contentHash": "4c9a8bb30e7b69c8af8c5c6a0866b020",
+      "sourceName": "contracts/PokemonFactory.sol",
+      "solcConfig": {
+        "version": "0.8.18",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.7.0 <0.9.0"
+      ],
+      "artifacts": [
+        "PokemonFactory"
+      ]
+    }
+  }
+}
