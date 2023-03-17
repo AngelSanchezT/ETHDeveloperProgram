@@ -41,7 +41,7 @@ contract PokemonFactory {
     mapping(uint => address) public pokemonToOwner;
     mapping(address => uint) ownerPokemonCount;
 
-    event eventNewPokemon(address sender, string message);
+    event eventNewPokemon(uint id, string message);
 
     function createPokemon(string memory _name, uint _id, uint[] memory _abilities, uint[] memory _types, uint[] memory _weaknesses ) public {
         require(_id > 0, "Pokemon id must be greater than zero");
@@ -57,7 +57,7 @@ contract PokemonFactory {
         pokemonTypes[_id] = _types;
         pokemonWeaknesses[_id] = _weaknesses;
 
-        emit eventNewPokemon(msg.sender, "new pokemon its create");
+        emit eventNewPokemon(_id, "new pokemon its create");
     }
 
     function getAllPokemons() public view returns (Pokemon[] memory) {
