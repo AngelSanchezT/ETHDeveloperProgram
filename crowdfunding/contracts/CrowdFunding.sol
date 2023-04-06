@@ -9,12 +9,19 @@ pragma solidity >=0.7.0 <0.9.0;
 
 contract CrowdFunding {
     // Variables de estado
+    // id: representa el ID único del proyecto de crowdfunding.
     string public id;
+    // name: representa el nombre del proyecto de crowdfunding.
     string public name;
+    // description: representa la descripción del proyecto de crowdfunding.
     string public description;
+    // author: representa la dirección Ethereum del autor o creador del contrato de crowdfunding.
     address payable public author;
+    // state: representa el estado actual del proyecto, que se inicializa como "Opened".
     string public state = "Opened";
+    // funds: representa la cantidad total de fondos que se han recaudado hasta el momento.
     uint256 public funds;
+    // fundraisingGoal: representa la cantidad objetivo de fondos que se deben recaudar para que el proyecto sea financiado con éxito.
     uint256 public fundraisingGoal;
 
     // Constructor
