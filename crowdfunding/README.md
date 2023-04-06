@@ -4,12 +4,18 @@ En este curso construiremos un smart contract que nos permita hacer crowdfunding
 
 ## Contenido <!-- omit in toc -->
 
-- [¿Qué es crowdfunding?](#qué-es-crowdfunding)
+- [¿Qué es Crowdfunding?](#qué-es-crowdfunding)
   - [¿Cómo nuestro smart contract hará esto?](#cómo-nuestro-smart-contract-hará-esto)
   - [¿Y por qué hacer esto en Blockchain?](#y-por-qué-hacer-esto-en-blockchain)
-  - [¿Cómo lo iremos construyendo?](#cómo-lo-iremos-construyendo)
+- [Contrato inteligente](#contrato-inteligente)
+  - [Test Unitarios](#test-unitarios)
+  - [Configuración y dependencias](#configuración-y-dependencias)
+  - [Instalación](#instalación)
+  - [Uso](#uso)
+- [Contribuciones](#contribuciones)
+- [Licencia](#licencia)
 
-# ¿Qué es crowdfunding?
+# ¿Qué es Crowdfunding?
 
 Es un mecanismo que emplean proyectos/empresas para levantar capital en pequeñas cantidades hasta llegar a una meta especifica.
 
@@ -28,11 +34,34 @@ La cantidad de Ether que las personas aportarán a un proyecto será enviado a u
 ## ¿Y por qué hacer esto en Blockchain?
 
 Gracias a las ventajas que ofrece Blockchain tendremos un sistema de crowdfunding confiable y seguro, pues cada uno de los aportes llegaran automáticamente a quién corresponde y, además, siempre habrá trazabilidad de cómo se distribuyen estos fondos.
+# Contrato inteligente
+El contrato inteligente se encuentra en la carpeta `contracts/` y se llama `CrowdFunding.sol`. Permite la creación de una campaña de recaudación de fondos y tiene los siguientes métodos:
 
-## ¿Cómo lo iremos construyendo?
+`fundProject()`: Permite a los usuarios enviar Ether al contrato y donar a la campaña.
+`changeProjectState(string newState)`: Permite al propietario del contrato cambiar el estado de la campaña (por ejemplo, de "Abierto" a "Cerrado").
 
-A medida que avanza el curso y vas aprendiendo conceptos vamos a ir integrando estos conceptos a nuestro smart contract. Podrás usar RemixIDE o cualquier otro entorno de trabajo visto en el [Curso de Prework para Desarrollo de Aplicaciones Blockchain.](https://platzi.com/clases/prework-blockchain/)
+## Test Unitarios
+Se han creado test unitarios en la carpeta `tests/` para probar el contrato inteligente. Estos test han sido escritos utilizando el framework de testing `Hardhat`.
 
-Al final tendremos un smart contract muy robusto que desplegaremos en una red de prueba. [Te comparto el repositorio en GitHub en donde encontrarás el código visto en las clases y también el que iremos desarrollando para construir el contrato inteligente.](https://github.com/anfepar/SmartContractsPlatzi)
+## Configuración y dependencias
+Este proyecto utiliza `Solidity` y `Hardhat`. Además, se requiere una conexión a una red Ethereum local o remota para realizar pruebas.
 
-Este proyecto será tu primer peldaño para introducirte en el mundo del desarrollo blockchain, cámbialo las veces que quieras, experimenta con las herramientas que vayamos aprendiendo y sobre todo, nunca pares de aprender. 💚
+## Instalación
+Para instalar las dependencias del proyecto, utiliza el siguiente comando:
+
+```sh
+npm install
+```
+
+## Uso
+Para compilar y realizar las pruebas del contrato inteligente, utiliza el siguiente comando:
+
+```sh
+npx hardhat test
+```
+
+# Contribuciones
+Las contribuciones a este proyecto son bienvenidas. Por favor, crea un pull request para realizar tus aportaciones.
+
+# Licencia
+Este proyecto se encuentra bajo la licencia GPL-3.0.
