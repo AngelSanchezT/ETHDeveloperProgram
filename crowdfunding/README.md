@@ -7,11 +7,11 @@ En este curso construiremos un smart contract que nos permita hacer crowdfunding
 - [¿Qué es Crowdfunding?](#qué-es-crowdfunding)
   - [¿Cómo nuestro smart contract hará esto?](#cómo-nuestro-smart-contract-hará-esto)
   - [¿Y por qué hacer esto en Blockchain?](#y-por-qué-hacer-esto-en-blockchain)
-- [Contrato inteligente](#contrato-inteligente)
+- [Estructura del Proyecto](#estructura-del-proyecto)
   - [Test Unitarios](#test-unitarios)
   - [Configuración y dependencias](#configuración-y-dependencias)
-  - [Instalación](#instalación)
-  - [Uso](#uso)
+- [Instalación](#instalación)
+- [Uso](#uso)
 - [Contribuciones](#contribuciones)
 - [Licencia](#licencia)
 
@@ -34,7 +34,25 @@ La cantidad de Ether que las personas aportarán a un proyecto será enviado a u
 ## ¿Y por qué hacer esto en Blockchain?
 
 Gracias a las ventajas que ofrece Blockchain tendremos un sistema de crowdfunding confiable y seguro, pues cada uno de los aportes llegaran automáticamente a quién corresponde y, además, siempre habrá trazabilidad de cómo se distribuyen estos fondos.
-# Contrato inteligente
+# Estructura del Proyecto
+
+La estructura del proyecto es la siguiente:
+
+```
+├── contracts/
+│ ├── CrowdFunding.sol
+│ └── ...
+├── migrations/
+│ ├── 01_deploy_contracts.js
+├── test/
+│ ├── CrowdFunding.test.js
+│ └── ...
+├── .gitignore
+├── hardhat.config.js
+├── package.json
+└── README.md
+```
+
 El contrato inteligente se encuentra en la carpeta `contracts/` y se llama `CrowdFunding.sol`. Permite la creación de una campaña de recaudación de fondos y tiene los siguientes métodos:
 
 `fundProject()`: Permite a los usuarios enviar Ether al contrato y donar a la campaña.
@@ -46,22 +64,30 @@ Se han creado test unitarios en la carpeta `tests/` para probar el contrato inte
 ## Configuración y dependencias
 Este proyecto utiliza `Solidity` y `Hardhat`. Además, se requiere una conexión a una red Ethereum local o remota para realizar pruebas.
 
-## Instalación
+# Instalación
 Para instalar las dependencias del proyecto, utiliza el siguiente comando:
 
 ```sh
 npm install
 ```
 
-## Uso
-Para compilar y realizar las pruebas del contrato inteligente, utiliza el siguiente comando:
+# Uso
+
+Para ejecutar las pruebas, es necesario tener configurado el archivo `.env` con las variables de entorno necesarias. Luego, se pueden compilar y ejecutar las pruebas con el siguiente comando:
 
 ```sh
 npx hardhat test
 ```
 
 # Contribuciones
-Las contribuciones a este proyecto son bienvenidas. Por favor, crea un pull request para realizar tus aportaciones.
+
+Las contribuciones son bienvenidas. Para proponer un cambio, se recomienda seguir los siguientes pasos:
+
+1. Crear una nueva rama (`git checkout -b feature/nombre-del-cambio`)
+2. Hacer los cambios necesarios
+3. Hacer commit de los cambios (`git commit -am 'Agrega el cambio'`)
+4. Hacer push de la rama (`git push origin feature/nombre-del-cambio`)
+5. Abrir un Pull Request
 
 # Licencia
 Este proyecto se encuentra bajo la licencia GPL-3.0.
