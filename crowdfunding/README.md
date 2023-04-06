@@ -1,8 +1,15 @@
-# Smart Contract para Crowdfunding
+# Smart Contract para Crowdfunding <!-- omit in toc -->
 
 En este curso construiremos un smart contract que nos permita hacer crowdfunding de proyectos usando Ether. Acompáñame para descubrir los detalles de este increíble proyecto.
 
-## ¿Qué es crowdfunding?
+## Contenido <!-- omit in toc -->
+
+- [¿Qué es crowdfunding?](#qué-es-crowdfunding)
+  - [¿Cómo nuestro smart contract hará esto?](#cómo-nuestro-smart-contract-hará-esto)
+  - [¿Y por qué hacer esto en Blockchain?](#y-por-qué-hacer-esto-en-blockchain)
+  - [¿Cómo lo iremos construyendo?](#cómo-lo-iremos-construyendo)
+
+# ¿Qué es crowdfunding?
 
 Es un mecanismo que emplean proyectos/empresas para levantar capital en pequeñas cantidades hasta llegar a una meta especifica.
 
