@@ -1,0 +1,76 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >=0.7.0 <0.9.0;
+
+/// @title Contrato de Ejemplo de CrowdFunding
+/// @author AngelSanchezT
+/// @notice Este contrato permite a los usuarios contribuir a un proyecto de crowdfunding y rastrear los fondos recaudados.
+/// @dev Este contrato utiliza el estándar de comentarios de NatSpec para proporcionar documentación del código.
+
+contract CrowdFunding {
+    // Variables de estado
+    // id: representa el ID único del proyecto de crowdfunding.
+    string public id;
+    // name: representa el nombre del proyecto de crowdfunding.
+    string public name;
+    // description: representa la descripción del proyecto de crowdfunding.
+    string public description;
+    // author: representa la dirección Ethereum del autor o creador del contrato de crowdfunding.
+    address payable public author;
+    // state: representa el estado actual del proyecto, que se inicializa como "Opened".
+    string public state = "Opened";
+    // funds: representa la cantidad total de fondos que se han recaudado hasta el momento.
+    uint256 public funds;
+    // fundraisingGoal: representa la cantidad objetivo de fondos que se deben recaudar para que el proyecto sea financiado con éxito.
+    uint256 public fundraisingGoal;
+
+    // Constructor
+    /// @param _id ID único del proyecto de crowdfunding
+    /// @param _name Nombre del proyecto de crowdfunding
+    /// @param _description Descripción del proyecto de crowdfunding
+    /// @param _fundraisingGoal Cantidad objetivo de fondos que se deben recaudar para financiar el proyecto con éxito
+    constructor(
+        string memory _id,
+        string memory _name,
+        string memory _description,
+        uint256 _fundraisingGoal
+    ) {
+        // Inicializa las variables de estado correspondientes
+        id = _id;
+        name = _name;
+        description = _description;
+        fundraisingGoal = _fundraisingGoal;
+        // Registra la dirección Ethereum del creador del contrato
+        author = payable(msg.sender);
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == author, "Solo el autor del proyecto puede cambiar el estado del proyecto");
+        //la función es insertada en donde aparece este símbolo
+        _;
+    }
+
+    modifier notOwner() {
+        require(msg.sender != author, "El autor no puede donar al proyecto propietario");
+        //la función es insertada en donde aparece este símbolo
+        _;
+    }
+
+    // Función para contribuir al proyecto de crowdfunding
+    /// @notice Esta función permite a los usuarios contribuir al proyecto de crowdfunding.
+    /// @dev Los fondos enviados se agregan a la cantidad total de fondos recaudados.
+    function fundProject() public notOwner payable {
+        // Transfiere el valor enviado a la dirección Ethereum del autor del contrato
+        author.transfer(msg.value);
+        // Incrementa la cantidad de fondos recaudados por la cantidad enviada por el usuario
+        funds += msg.value;
+    }
+
+    // Función para cambiar el estado del proyecto
+    /// @notice Esta función permite al creador del contrato cambiar el estado del proyecto.
+    /// @param newState El nuevo estado del proyecto.
+    function changeProjectState(string calldata newState) public onlyOwner {
+        // Actualiza el estado actual del proyecto a la cadena proporcionada como entrada
+        state = newState;
+    }
+}

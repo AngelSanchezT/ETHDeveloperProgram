@@ -1,8 +1,21 @@
-# Smart Contract para Crowdfunding
+# Smart Contract para Crowdfunding <!-- omit in toc -->
 
 En este curso construiremos un smart contract que nos permita hacer crowdfunding de proyectos usando Ether. Acompáñame para descubrir los detalles de este increíble proyecto.
 
-## ¿Qué es crowdfunding?
+## Contenido <!-- omit in toc -->
+
+- [¿Qué es Crowdfunding?](#qué-es-crowdfunding)
+  - [¿Cómo nuestro smart contract hará esto?](#cómo-nuestro-smart-contract-hará-esto)
+  - [¿Y por qué hacer esto en Blockchain?](#y-por-qué-hacer-esto-en-blockchain)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+  - [Test Unitarios](#test-unitarios)
+  - [Configuración y dependencias](#configuración-y-dependencias)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Contribuciones](#contribuciones)
+- [Licencia](#licencia)
+
+# ¿Qué es Crowdfunding?
 
 Es un mecanismo que emplean proyectos/empresas para levantar capital en pequeñas cantidades hasta llegar a una meta especifica.
 
@@ -21,11 +34,60 @@ La cantidad de Ether que las personas aportarán a un proyecto será enviado a u
 ## ¿Y por qué hacer esto en Blockchain?
 
 Gracias a las ventajas que ofrece Blockchain tendremos un sistema de crowdfunding confiable y seguro, pues cada uno de los aportes llegaran automáticamente a quién corresponde y, además, siempre habrá trazabilidad de cómo se distribuyen estos fondos.
+# Estructura del Proyecto
 
-## ¿Cómo lo iremos construyendo?
+La estructura del proyecto es la siguiente:
 
-A medida que avanza el curso y vas aprendiendo conceptos vamos a ir integrando estos conceptos a nuestro smart contract. Podrás usar RemixIDE o cualquier otro entorno de trabajo visto en el [Curso de Prework para Desarrollo de Aplicaciones Blockchain.](https://platzi.com/clases/prework-blockchain/)
+```
+├── contracts/
+│ ├── CrowdFunding.sol
+│ └── ...
+├── migrations/
+│ ├── 01_deploy_contracts.js
+├── test/
+│ ├── CrowdFunding.test.js
+│ └── ...
+├── .gitignore
+├── hardhat.config.js
+├── package.json
+└── README.md
+```
 
-Al final tendremos un smart contract muy robusto que desplegaremos en una red de prueba. [Te comparto el repositorio en GitHub en donde encontrarás el código visto en las clases y también el que iremos desarrollando para construir el contrato inteligente.](https://github.com/anfepar/SmartContractsPlatzi)
+El contrato inteligente se encuentra en la carpeta `contracts/` y se llama `CrowdFunding.sol`. Permite la creación de una campaña de recaudación de fondos y tiene los siguientes métodos:
 
-Este proyecto será tu primer peldaño para introducirte en el mundo del desarrollo blockchain, cámbialo las veces que quieras, experimenta con las herramientas que vayamos aprendiendo y sobre todo, nunca pares de aprender. 💚
+`fundProject()`: Permite a los usuarios enviar Ether al contrato y donar a la campaña.
+`changeProjectState(string newState)`: Permite al propietario del contrato cambiar el estado de la campaña (por ejemplo, de "Abierto" a "Cerrado").
+
+## Test Unitarios
+Se han creado test unitarios en la carpeta `tests/` para probar el contrato inteligente. Estos test han sido escritos utilizando el framework de testing `Hardhat`.
+
+## Configuración y dependencias
+Este proyecto utiliza `Solidity` y `Hardhat`. Además, se requiere una conexión a una red Ethereum local o remota para realizar pruebas.
+
+# Instalación
+Para instalar las dependencias del proyecto, utiliza el siguiente comando:
+
+```sh
+npm install
+```
+
+# Uso
+
+Para ejecutar las pruebas, es necesario tener configurado el archivo `.env` con las variables de entorno necesarias. Luego, se pueden compilar y ejecutar las pruebas con el siguiente comando:
+
+```sh
+npx hardhat test
+```
+
+# Contribuciones
+
+Las contribuciones son bienvenidas. Para proponer un cambio, se recomienda seguir los siguientes pasos:
+
+1. Crear una nueva rama (`git checkout -b feature/nombre-del-cambio`)
+2. Hacer los cambios necesarios
+3. Hacer commit de los cambios (`git commit -am 'Agrega el cambio'`)
+4. Hacer push de la rama (`git push origin feature/nombre-del-cambio`)
+5. Abrir un Pull Request
+
+# Licencia
+Este proyecto se encuentra bajo la licencia GPL-3.0.
