@@ -44,22 +44,23 @@ contract CrowdFunding {
         author = payable(msg.sender);
     }
 
-    modifier onlyOwner() {
-        require(msg.sender == author, "Solo el autor del proyecto puede cambiar el estado del proyecto");
-        //la función es insertada en donde aparece este símbolo
+     modifier isAuthor() {
+        require(author == msg.sender, "You need to be the project author");
         _;
     }
 
-    modifier notOwner() {
-        require(msg.sender != author, "El autor no puede donar al proyecto propietario");
-        //la función es insertada en donde aparece este símbolo
+    modifier isNotAuthor() {
+        require(
+            author != msg.sender,
+            "As author you can not fund your own project"
+        );
         _;
     }
 
     // Función para contribuir al proyecto de crowdfunding
     /// @notice Esta función permite a los usuarios contribuir al proyecto de crowdfunding.
     /// @dev Los fondos enviados se agregan a la cantidad total de fondos recaudados.
-    function fundProject() public notOwner payable {
+    function fundProject() public payable isNotAuthor {
         // Transfiere el valor enviado a la dirección Ethereum del autor del contrato
         author.transfer(msg.value);
         // Incrementa la cantidad de fondos recaudados por la cantidad enviada por el usuario
@@ -69,7 +70,7 @@ contract CrowdFunding {
     // Función para cambiar el estado del proyecto
     /// @notice Esta función permite al creador del contrato cambiar el estado del proyecto.
     /// @param newState El nuevo estado del proyecto.
-    function changeProjectState(string calldata newState) public onlyOwner {
+    function changeProjectState(string calldata newState) public isAuthor {
         // Actualiza el estado actual del proyecto a la cadena proporcionada como entrada
         state = newState;
     }

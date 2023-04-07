@@ -74,7 +74,7 @@ describe("CrowdFunding", function () {
         crowdFunding.connect(author).fundProject({
           value: ethers.utils.parseEther("1"),
         })
-      ).to.be.revertedWith("El autor no puede donar al proyecto propietario");
+      ).to.be.revertedWith("As author you can not fund your own project");
     });
   });
 
@@ -97,7 +97,7 @@ describe("CrowdFunding", function () {
       await expect(
         crowdFunding.connect(notOwner).changeProjectState("Closed")
       ).to.be.revertedWith(
-        "Solo el autor del proyecto puede cambiar el estado del proyecto"
+        "You need to be the project author"
       );
     });
   });
