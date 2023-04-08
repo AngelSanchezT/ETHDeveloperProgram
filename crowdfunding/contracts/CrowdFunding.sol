@@ -8,6 +8,10 @@ pragma solidity >=0.7.0 <0.9.0;
 /// @dev Este contrato utiliza el estándar de comentarios de NatSpec para proporcionar documentación del código.
 
 contract CrowdFunding {
+
+    enum State { Opened, Closed }
+
+
     // Variables de estado
     struct Project {
         // id: representa el ID único del proyecto de crowdfunding.
@@ -19,7 +23,7 @@ contract CrowdFunding {
         // author: representa la dirección Ethereum del autor o creador del contrato de crowdfunding.
         address payable author;
         // state: representa el estado actual del proyecto, que se inicializa como "Opened" = 0.
-        uint state;
+        State state;
         // funds: representa la cantidad total de fondos que se han recaudado hasta el momento.
         uint funds;
         // fundraisingGoal: representa la cantidad objetivo de fondos que se deben recaudar para que el proyecto sea financiado con éxito.
@@ -46,7 +50,7 @@ contract CrowdFunding {
             _description,
             // Registra la dirección Ethereum del creador del contrato
             payable(msg.sender),
-            0,
+            State.Opened,
             0,
             _fundraisingGoal
         );
@@ -54,7 +58,7 @@ contract CrowdFunding {
 
     event ProjectFunded(string projectId, uint value);
 
-    event ProjectStateChanged(string projectId, uint state);
+    event ProjectStateChanged(string projectId, State state);
 
     modifier isAuthor() {
         require(
@@ -76,7 +80,7 @@ contract CrowdFunding {
     /// @notice Esta función permite a los usuarios contribuir al proyecto de crowdfunding.
     /// @dev Los fondos enviados se agregan a la cantidad total de fondos recaudados.
     function fundProject() public payable isNotAuthor {
-        require(project.state != 1, "The project can not receive funds");
+        require(project.state != State.Closed, "The project can not receive funds");
         require(msg.value > 0, "Fund value must be greater than 0");
 
         // Transfiere el valor enviado a la dirección Ethereum del autor del contrato
@@ -89,7 +93,7 @@ contract CrowdFunding {
     // Función para cambiar el estado del proyecto
     /// @notice Esta función permite al creador del contrato cambiar el estado del proyecto.
     /// @param newState El nuevo estado del proyecto.
-    function changeProjectState(uint newState) public isAuthor {
+    function changeProjectState(State newState) public isAuthor {
         require(project.state != newState, "New state must be different");
         // Actualiza el estado actual del proyecto a la cadena proporcionada como entrada
         project.state = newState;

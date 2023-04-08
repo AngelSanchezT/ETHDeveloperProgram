@@ -26,13 +26,10 @@ describe("CrowdFunding", function () {
 
   describe("Deployment", () => {
     it("Should set the correct values", async () => {
-    
       expect(project.id).to.equal("1");
       expect(project.name).to.equal("Project Name");
       expect(project.description).to.equal("Project Description");
-      expect(project.fundraisingGoal).to.equal(
-        ethers.utils.parseEther("100")
-      );
+      expect(project.fundraisingGoal).to.equal(ethers.utils.parseEther("100"));
       expect(project.author).to.equal(owner.address);
       expect(project.state).to.equal(OPENED);
     });
@@ -156,8 +153,7 @@ describe("CrowdFunding", function () {
     });
 
     it("Challenge 4 - Should revert transaction because new state must be different", async function () {
-      
-      if (project.state.toNumber() === OPENED) {
+      if (project.state === OPENED) {
         await expect(
           crowdFunding.connect(owner).changeProjectState(OPENED)
         ).to.be.revertedWith("New state must be different");
@@ -166,6 +162,11 @@ describe("CrowdFunding", function () {
           crowdFunding.connect(owner).changeProjectState(CLOSED)
         ).to.be.revertedWith("New state must be different");
       }
+    });
+
+    it("Challenge 5 - Should revert transaction because new state no is valid", async function () {
+      await expect(crowdFunding.connect(owner).changeProjectState(2)).to.be
+        .reverted;
     });
   });
 });
