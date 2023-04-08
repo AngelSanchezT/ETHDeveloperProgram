@@ -17,8 +17,8 @@ contract CrowdFunding {
     string public description;
     // author: representa la dirección Ethereum del autor o creador del contrato de crowdfunding.
     address payable public author;
-    // state: representa el estado actual del proyecto, que se inicializa como "Opened".
-    string public state = "Opened";
+    // state: representa el estado actual del proyecto, que se inicializa como "Opened" = 0.
+    uint256 public state;
     // funds: representa la cantidad total de fondos que se han recaudado hasta el momento.
     uint256 public funds;
     // fundraisingGoal: representa la cantidad objetivo de fondos que se deben recaudar para que el proyecto sea financiado con éxito.
@@ -46,7 +46,7 @@ contract CrowdFunding {
 
     event ProjectFunded(string projectId, uint256 value);
 
-    event ProjectStateChanged(string projectId, string state);
+    event ProjectStateChanged(string projectId, uint state);
 
      modifier isAuthor() {
         require(author == msg.sender, "You need to be the project author");
@@ -65,6 +65,9 @@ contract CrowdFunding {
     /// @notice Esta función permite a los usuarios contribuir al proyecto de crowdfunding.
     /// @dev Los fondos enviados se agregan a la cantidad total de fondos recaudados.
     function fundProject() public payable isNotAuthor {
+        require(state != 1, "The project can not receive funds");
+        require(msg.value > 0, "Fund value must be greater than 0");
+
         // Transfiere el valor enviado a la dirección Ethereum del autor del contrato
         author.transfer(msg.value);
         // Incrementa la cantidad de fondos recaudados por la cantidad enviada por el usuario
@@ -75,7 +78,8 @@ contract CrowdFunding {
     // Función para cambiar el estado del proyecto
     /// @notice Esta función permite al creador del contrato cambiar el estado del proyecto.
     /// @param newState El nuevo estado del proyecto.
-    function changeProjectState(string calldata newState) public isAuthor {
+    function changeProjectState(uint256 newState) public isAuthor {
+        require(state != newState, "New state must be different");
         // Actualiza el estado actual del proyecto a la cadena proporcionada como entrada
         state = newState;
         emit ProjectStateChanged(id, newState);
