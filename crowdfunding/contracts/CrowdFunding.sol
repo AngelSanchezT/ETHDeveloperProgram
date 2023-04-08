@@ -48,7 +48,7 @@ contract CrowdFunding {
 
     event ProjectStateChanged(string projectId, uint state);
 
-     modifier isAuthor() {
+    modifier isAuthor() {
         require(author == msg.sender, "You need to be the project author");
         _;
     }
