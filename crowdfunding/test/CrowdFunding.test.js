@@ -6,32 +6,35 @@ describe("CrowdFunding", function () {
   const CLOSED = 1;
   let crowdFunding;
   let owner;
-  let project;
+  let projects;
 
   beforeEach(async () => {
     const CrowdFunding = await ethers.getContractFactory("CrowdFunding");
-    crowdFunding = await CrowdFunding.deploy(
+
+    crowdFunding = await CrowdFunding.deploy();
+
+    await crowdFunding.createProject(
       "1",
       "Project Name",
       "Project Description",
       ethers.utils.parseEther("100")
     );
 
-    await crowdFunding.deployed();
-
-    project = await crowdFunding.project();
+    projects = await crowdFunding.getAllProjects();
 
     [owner] = await ethers.getSigners();
   });
 
   describe("Deployment", () => {
     it("Should set the correct values", async () => {
-      expect(project.id).to.equal("1");
-      expect(project.name).to.equal("Project Name");
-      expect(project.description).to.equal("Project Description");
-      expect(project.fundraisingGoal).to.equal(ethers.utils.parseEther("100"));
-      expect(project.author).to.equal(owner.address);
-      expect(project.state).to.equal(OPENED);
+      expect(projects[0].id).to.equal("1");
+      expect(projects[0].name).to.equal("Project Name");
+      expect(projects[0].description).to.equal("Project Description");
+      expect(projects[0].fundraisingGoal).to.equal(
+        ethers.utils.parseEther("100")
+      );
+      expect(projects[0].author).to.equal(owner.address);
+      expect(projects[0].state).to.equal(OPENED);
     });
   });
 
@@ -39,16 +42,17 @@ describe("CrowdFunding", function () {
     it("Challenge 1 - Should add funds to the contract and transfer them to the author", async () => {
       // Obtener la dirección de un usuario que no es el autor
       const [, user] = await ethers.getSigners();
+      let project = projects[0];
       const initialFunds = project.funds;
       const value = ethers.utils.parseEther("1");
 
       const authorBalanceInit = await ethers.provider.getBalance(owner.address);
       const userBalanceInit = await ethers.provider.getBalance(user.address);
 
-      await crowdFunding.connect(user).fundProject({ value });
+      await crowdFunding.connect(user).fundProject(0, { value });
 
       // Aquí se guarda el valor actual de los fondos del contrato en la variable newFunds.
-      project = await crowdFunding.project();
+      project = await crowdFunding.projects(0);
       const newFunds = project.funds;
 
       // Aquí se obtiene el saldo actual del autor del contrato.
@@ -76,7 +80,7 @@ describe("CrowdFunding", function () {
 
       // Intentar contribuir al proyecto
       await expect(
-        crowdFunding.connect(author).fundProject({
+        crowdFunding.connect(author).fundProject(0, {
           value: ethers.utils.parseEther("1"),
         })
       ).to.be.revertedWith("As author you can not fund your own project");
@@ -88,9 +92,9 @@ describe("CrowdFunding", function () {
       const value = ethers.utils.parseEther("1");
 
       // Intentar contribuir al proyecto y evaluar el evento
-      await expect(crowdFunding.connect(user).fundProject({ value }))
+      await expect(crowdFunding.connect(user).fundProject(0, { value }))
         .to.emit(crowdFunding, "ProjectFunded")
-        .withArgs(project.id, value);
+        .withArgs(projects[0].id, value);
     });
 
     it("Challenge 4 - Should revert transaction because the project can not receive funds", async function () {
@@ -98,11 +102,11 @@ describe("CrowdFunding", function () {
       const [, user] = await ethers.getSigners();
       const value = ethers.utils.parseEther("1");
 
-      await crowdFunding.connect(owner).changeProjectState(CLOSED);
+      await crowdFunding.connect(owner).changeProjectState(0, CLOSED);
 
       // Intentar contribuir al proyecto y evaluar el evento
       await expect(
-        crowdFunding.connect(user).fundProject({ value })
+        crowdFunding.connect(user).fundProject(0, { value })
       ).to.be.revertedWith("The project can not receive funds");
     });
 
@@ -111,30 +115,30 @@ describe("CrowdFunding", function () {
       const [, user] = await ethers.getSigners();
       const value = ethers.utils.parseEther("0");
 
-      if (project.state === CLOSED) {
-        await crowdFunding.connect(owner).changeProjectState(OPENED);
+      if (projects[0].state === CLOSED) {
+        await crowdFunding.connect(owner).changeProjectState(0, OPENED);
       }
 
       // Intentar contribuir al proyecto y evaluar el evento
       await expect(
-        crowdFunding.connect(user).fundProject({ value })
+        crowdFunding.connect(user).fundProject(0, { value })
       ).to.be.revertedWith("Fund value must be greater than 0");
     });
   });
 
   describe("changeProjectState", () => {
     it("Challenge 1 - Should change the project state", async () => {
-      await crowdFunding.connect(owner).changeProjectState(CLOSED);
+      await crowdFunding.connect(owner).changeProjectState(0, CLOSED);
 
-      project = await crowdFunding.project();
+      let project = await crowdFunding.projects(0);
 
       expect(project.state).to.equal(CLOSED);
     });
 
     it("Challenge 2 - should allow owner to change project state", async function () {
-      await crowdFunding.connect(owner).changeProjectState(CLOSED);
+      await crowdFunding.connect(owner).changeProjectState(0, CLOSED);
 
-      project = await crowdFunding.project();
+      let project = await crowdFunding.projects(0);
 
       expect(project.state).to.equal(CLOSED);
     });
@@ -142,31 +146,46 @@ describe("CrowdFunding", function () {
     it("Challenge 2 - should revert when not owner tries to change project state", async function () {
       const [, notOwner] = await ethers.getSigners();
       await expect(
-        crowdFunding.connect(notOwner).changeProjectState(CLOSED)
+        crowdFunding.connect(notOwner).changeProjectState(0, CLOSED)
       ).to.be.revertedWith("You need to be the project author");
     });
 
     it("Challenge 3 - should emitted event ProjectStateChanged", async function () {
-      await expect(crowdFunding.connect(owner).changeProjectState(CLOSED))
+      await expect(crowdFunding.connect(owner).changeProjectState(0, CLOSED))
         .to.emit(crowdFunding, "ProjectStateChanged")
-        .withArgs(project.id, CLOSED);
+        .withArgs(projects[0].id, CLOSED);
     });
 
     it("Challenge 4 - Should revert transaction because new state must be different", async function () {
-      if (project.state === OPENED) {
+      if (projects[0].state === OPENED) {
         await expect(
-          crowdFunding.connect(owner).changeProjectState(OPENED)
+          crowdFunding.connect(owner).changeProjectState(0, OPENED)
         ).to.be.revertedWith("New state must be different");
       } else {
         await expect(
-          crowdFunding.connect(owner).changeProjectState(CLOSED)
+          crowdFunding.connect(owner).changeProjectState(0, CLOSED)
         ).to.be.revertedWith("New state must be different");
       }
     });
 
     it("Challenge 6 - Should revert transaction because new state no is valid", async function () {
-      await expect(crowdFunding.connect(owner).changeProjectState(2)).to.be
+      await expect(crowdFunding.connect(owner).changeProjectState(0, 2)).to.be
         .reverted;
+    });
+  });
+
+  describe("createProject", () => {
+    it("Challenge 7 - Should create other project", async function () {
+      await crowdFunding.createProject(
+        "2",
+        "Proyecto Dos",
+        "Descripción del Proyecto 2",
+        ethers.utils.parseEther("100")
+      );
+
+      projects = await crowdFunding.getAllProjects();
+
+      expect(projects.length).to.equal(2);
     });
   });
 });
