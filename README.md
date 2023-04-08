@@ -6,8 +6,8 @@ Este repositorio contiene los proyectos desarrollados durante el programa Ethere
 
 Aquí se listan los proyectos desarrollados durante el programa:
 
-- [PokemonFactory](./pokemonFactory/README.md)
-- [Crowdfunding](./crowdfunding/README.md)
+- [PokemonFactory](./pokemonFactory/)
+- [Crowdfunding](./crowdfunding/)
 
 ## Requisitos
 
