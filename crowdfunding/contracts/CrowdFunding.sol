@@ -44,6 +44,10 @@ contract CrowdFunding {
         author = payable(msg.sender);
     }
 
+    event ProjectFunded(string projectId, uint256 value);
+
+    event ProjectStateChanged(string projectId, string state);
+
      modifier isAuthor() {
         require(author == msg.sender, "You need to be the project author");
         _;
@@ -65,6 +69,7 @@ contract CrowdFunding {
         author.transfer(msg.value);
         // Incrementa la cantidad de fondos recaudados por la cantidad enviada por el usuario
         funds += msg.value;
+        emit ProjectFunded(id, msg.value);
     }
 
     // Función para cambiar el estado del proyecto
@@ -73,5 +78,6 @@ contract CrowdFunding {
     function changeProjectState(string calldata newState) public isAuthor {
         // Actualiza el estado actual del proyecto a la cadena proporcionada como entrada
         state = newState;
+        emit ProjectStateChanged(id, newState);
     }
 }
