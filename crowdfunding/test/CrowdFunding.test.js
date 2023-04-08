@@ -164,7 +164,7 @@ describe("CrowdFunding", function () {
       }
     });
 
-    it("Challenge 5 - Should revert transaction because new state no is valid", async function () {
+    it("Challenge 6 - Should revert transaction because new state no is valid", async function () {
       await expect(crowdFunding.connect(owner).changeProjectState(2)).to.be
         .reverted;
     });
