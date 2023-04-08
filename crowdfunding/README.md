@@ -7,6 +7,7 @@ En este curso construiremos un smart contract que nos permita hacer crowdfunding
 - [¿Qué es Crowdfunding?](#qué-es-crowdfunding)
   - [¿Cómo nuestro smart contract hará esto?](#cómo-nuestro-smart-contract-hará-esto)
   - [¿Y por qué hacer esto en Blockchain?](#y-por-qué-hacer-esto-en-blockchain)
+- [Desafió sobre CrowdFunding](#desafió-sobre-crowdfunding)
 - [Estructura del Proyecto](#estructura-del-proyecto)
   - [Test Unitarios](#test-unitarios)
   - [Configuración y dependencias](#configuración-y-dependencias)
@@ -34,6 +35,23 @@ La cantidad de Ether que las personas aportarán a un proyecto será enviado a u
 ## ¿Y por qué hacer esto en Blockchain?
 
 Gracias a las ventajas que ofrece Blockchain tendremos un sistema de crowdfunding confiable y seguro, pues cada uno de los aportes llegaran automáticamente a quién corresponde y, además, siempre habrá trazabilidad de cómo se distribuyen estos fondos.
+
+# Desafió sobre CrowdFunding
+Un CrowdFunding es un mecanismo colectivo de financiación de proyectos donde múltiples usuarios realizan aportes económicos a una cuenta con el fin de que esta reciba inversión y el proyecto se desarrolle.
+
+Por lo general, y para evitar estafas, dichos proyectos se encuentran aprobados por una plataforma y poseen un libro blanco que describe el equipo y los objetivos del mismo. Los usuario que aportan capital suelen recibir incentivos en forma de tokens que pueden ser más valiosos en el futuro si el proyecto tiene éxito y recuperar la inversión.
+
+Tu objetivo será desarrollar un contrato inteligente que permita:
+
+- Inicializar el contrato y crea una `struct` para almacenar los datos de una proyecto y administra el estado de cada uno con un `enum`.
+- Crear una función `fundProject()` que permita enviar ETH a un proyecto.
+- Crear la función `changeProjectState()` que permita cambiar el estado de un proyecto.
+- Utilizar `modifiers` para que solo el creador de un proyecto pueda modificarlo su estado.
+- Producir validaciones en tu contrato para que no pueda aportarse capital a un proyecto finalizado o evitar que se aporte 0 ETH.
+- Almacenar los proyectos en un _Array_ y guarda cada contribución que un proyecto reciba en un Mappings.
+
+Al finalizar el reto, comparte tu primer contrato inteligente y compara tu solución con la de otros estudiantes. Recuerda que existen distintas maneras de resolver este reto.
+
 # Estructura del Proyecto
 
 La estructura del proyecto es la siguiente:
