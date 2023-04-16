@@ -9,7 +9,7 @@ contract VisitCounter {
     }
 
     mapping(address => Person) private people;
-    uint256 totalVisits;
+    uint256 private totalVisits;
 
     function visit(string calldata _message) external returns (uint256) {
         people[msg.sender].counter++;
@@ -18,7 +18,11 @@ contract VisitCounter {
         return (totalVisits);
     }
 
-    function getPeople(address _addr) external view returns(Person memory) {
-        return(people[_addr]);
+    function getPeople(address _addr) external view returns (Person memory) {
+        return (people[_addr]);
+    }
+
+    function getTotalVisits() external view returns (uint256) {
+        return (totalVisits);
     }
 }
