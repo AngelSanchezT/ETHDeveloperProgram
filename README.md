@@ -8,6 +8,7 @@ Aquí se listan los proyectos desarrollados durante el programa:
 
 - [PokemonFactory](./pokemonFactory/)
 - [Crowdfunding](./crowdfunding/)
+- [VisitCounter](./VisitCounter/)
 
 ## Requisitos
 

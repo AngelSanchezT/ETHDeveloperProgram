@@ -1,0 +1,16 @@
+{
+  "name": "visitcounter",
+  "version": "1.0.0",
+  "description": "Crear un contrato inteligente que registre la cantidad de Visitas de un usuario a través de la funcion visitar().",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "hardhat": "^2.14.0"
+  }
+}
