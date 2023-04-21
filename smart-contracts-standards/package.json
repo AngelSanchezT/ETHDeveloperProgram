@@ -1,0 +1,16 @@
+{
+  "name": "smart-contracts-standards",
+  "version": "1.0.0",
+  "description": "**Punto 1:** De la lista de Smart Contracts Weekness Clasification, selecciona 2 vulnerabilidades que te parecieron interesantes y describe la o las soluciones propuestas.\r **Punto 2:** Implementa un contrato inteligente que use la libreria de contratos de OpenZeppelin, debe utilizar alguno de los contratos que implementa un estandar ERC y un contrato adicional de tu preferencia de la librería, describe porque elegiste estos contratos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "hardhat": "^2.14.0"
+  }
+}
