@@ -2,7 +2,11 @@
 
 Este proyecto muestra el uso básico de la librería de contratos de OpenZeppelin.
 
-> Esta compuesto por un contrato de ejemplo `contracts/MyToken.sol`, un test para el contrato en `test/MyToken.js` y un script para desplegar el contrato `scripts/deploy.js` en la red de prueba.
+## Table of content
+- [Descripción](#descripción)
+- [Cristerio de aceptación](#criterio-de-aceptación)
+- [Documentación](#📄-documentación)
+
 
 ## Descripción:
 **Punto 1:** De la lista de Smart Contracts Weekness Clasification, selecciona 2 vulnerabilidades que te parecieron interesantes y describe la o las soluciones propuestas.
@@ -14,6 +18,8 @@ Este proyecto muestra el uso básico de la librería de contratos de OpenZeppeli
   - [ ] Contrato
   - [ ] Pruebas 
   - [ ] Descripcion de la elección
+
+> Esta compuesto por un contrato de ejemplo `contracts/MyToken.sol`, un test para el contrato en `test/MyToken.js` y un script para desplegar el contrato `scripts/deploy.js` en la red de prueba.
 
 
 # 📄 Documentación
