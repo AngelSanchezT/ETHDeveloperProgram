@@ -221,6 +221,44 @@
       "artifacts": [
         "IERC20"
       ]
+    },
+    "D:\\DESARROLLO\\XOLIT\\Learning Path\\git\\ETH-2023\\ETHDeveloperProgramV2\\smart-contracts-standards\\contracts\\MiTokenFungible.sol": {
+      "lastModificationDate": 1682138105615,
+      "contentHash": "5dc7551307f1b455f5ef8252f574b7c5",
+      "sourceName": "contracts/MiTokenFungible.sol",
+      "solcConfig": {
+        "version": "0.8.18",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        ">=0.7.0 <0.9.0"
+      ],
+      "artifacts": [
+        "MiTokenFungible"
+      ]
     }
   }
 }
