@@ -1,0 +1,12 @@
+{
+  "name": "starknet-learn",
+  "version": "1.0.0",
+  "description": "Un proyecto educativo para aprender a desarrollar en StarkNet. Incluye tutoriales, desafíos y proyectos prácticos para ayudar a los desarrolladores a familiarizarse con la tecnología.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
