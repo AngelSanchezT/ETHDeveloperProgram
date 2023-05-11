@@ -10,6 +10,7 @@ export default function Home() {
     useWeb3React();
 
   const connect = useCallback(() => {
+    console.log("connect");
     activate(connector);
     localStorage.setItem("previouslyConnected", "true");
   }, [activate]);
@@ -20,6 +21,7 @@ export default function Home() {
   };
 
   useEffect(() => {
+    console.log("connect: ");
     if (localStorage.getItem("previouslyConnected") === "true") connect();
   }, [connect]);
 
