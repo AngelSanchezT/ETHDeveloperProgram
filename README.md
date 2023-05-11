@@ -9,6 +9,8 @@ Aquí se listan los proyectos desarrollados durante el programa:
 - [PokemonFactory](./pokemonFactory/)
 - [Crowdfunding](./crowdfunding/)
 - [VisitCounter](./VisitCounter/)
+- [Smart-Contracts-Standards](./smart-contracts-standards/)
+- [Startnet-Learn](./starknet-learn/)
 
 ## Requisitos
 
