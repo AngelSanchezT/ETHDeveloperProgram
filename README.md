@@ -2,16 +2,20 @@
 
 Este repositorio contiene los proyectos desarrollados durante el programa Ethereum Developer Program de Platzi. 🚀
 
-## Proyectos
+## Proyectos - Retos
 
-Aquí se listan los proyectos desarrollados durante el programa:
+Aquí se listan los proyectos/Retos desarrollados durante el programa:
 
-- [PokemonFactory](./pokemonFactory/)
-- [Crowdfunding](./crowdfunding/)
-- [VisitCounter](./VisitCounter/)
-- [Smart-Contracts-Standards](./smart-contracts-standards/)
+- [✅ Reto #1 - PokemonFactory](./pokemonFactory/)
+- [✅ Reto #2 - Smart-Contracts-Standards](./smart-contracts-standards/)
+- 🚩 Reto #3 - EVM Puzzles
+- [🚩 Reto #4 Contador de Visitas](./VisitCounter/)
+- 🚩 Reto #5 - Contador de Oraculos
+- [✅ Crowdfunding](./crowdfunding/)
+- [🚩 Metamask-Login](./metamask-login/)
+
 - [Startnet-Learn](./starknet-learn/)
-- [Metamask-Login](./metamask-login/)
+
 
 ## Requisitos
 
