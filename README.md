@@ -8,18 +8,22 @@ Aquí se listan los proyectos/Retos desarrollados durante el programa:
 
 - [✅ Reto #1 - PokemonFactory](./pokemonFactory/)
 - [✅ Reto #2 - Smart-Contracts-Standards](./smart-contracts-standards/)
-- 🚩 Reto #3 - EVM Puzzles
-- [🚩 Reto #4 Contador de Visitas](./VisitCounter/)
-- 🚩 Reto #5 - Contador de Oraculos
-- [✅ Crowdfunding](./crowdfunding/)
-- [🚩 Metamask-Login](./metamask-login/)
-
-- [Startnet-Learn](./starknet-learn/)
+- 🔴 Reto #3 - EVM Puzzles
+- [🔴 Reto #4 Contador de Visitas](./VisitCounter/)
+- 🔴 Reto #5 - Contador de Oraculos
+- [🔴 Metamask-Login](./metamask-login/)
 
 ## Proyectos - Retos ETH Program v1 (2022)
 
 Aquí se listan los proyectos/Retos desarrollados durante el programa:
-[🔴 Platzi-Web3-Libs](./platzi-web3-libs/)
+
+- [🔴 Platzi-Web3-Libs](./platzi-web3-libs/)
+
+## Proyectos - Learning Platzi
+
+- [✅ Crowdfunding](./crowdfunding/)
+- [🔴 Startnet-Learn](./starknet-learn/)
+
 
 ## Requisitos
 
