@@ -2,7 +2,7 @@
 
 Este repositorio contiene los proyectos desarrollados durante el programa Ethereum Developer Program de Platzi. 🚀
 
-## Proyectos - Retos
+## Proyectos - Retos ETH Program v2 (2023)
 
 Aquí se listan los proyectos/Retos desarrollados durante el programa:
 
@@ -16,6 +16,10 @@ Aquí se listan los proyectos/Retos desarrollados durante el programa:
 
 - [Startnet-Learn](./starknet-learn/)
 
+## Proyectos - Retos ETH Program v1 (2022)
+
+Aquí se listan los proyectos/Retos desarrollados durante el programa:
+[🔴 Platzi-Web3-Libs](./platzi-web3-libs/)
 
 ## Requisitos
 
