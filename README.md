@@ -61,3 +61,4 @@ Este proyecto está bajo la Licencia MIT. Para mayores detalles, consulta el arc
 - [ ] Crear un instructivo para crear un proyecto HelloWord para Truffle Suite [Link](https://platzi.com/clases/2559-prework-blockchain/43479-truffle-suite/)
 - [ ] Crear un instructivo para crear un proyecto HelloWord con HardHard [Link](https://platzi.com/clases/2559-prework-blockchain/43480-hardhat/)
 - [ ] Crear una guia para crear un proyecto HelloWord con Web3.js [Link](https://platzi.com/clases/2559-prework-blockchain/42633-conectando-la-blockchain-con-el-navegador-web3js/)
+- [ ] Crear un instructivo como se crea una wallet en Metamsk y en StartNet. [Link](https://platzi.com/clases/2559-prework-blockchain/42633-conectando-la-blockchain-con-el-navegador-web3js/)
