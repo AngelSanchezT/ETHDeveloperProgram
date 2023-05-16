@@ -59,4 +59,4 @@ Este proyecto está bajo la Licencia MIT. Para mayores detalles, consulta el arc
 
 # TODO
 - [ ] Crear un instructivo para crear un proyecto HelloWord para Truffle Suite [Link](https://platzi.com/clases/2559-prework-blockchain/43479-truffle-suite/)
-
+- [ ] Crear un instructivo para crear un proyecto HelloWord con HardHard [Link](https://platzi.com/clases/2559-prework-blockchain/43480-hardhat/)
