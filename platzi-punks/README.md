@@ -1,4 +1,4 @@
-# Nombre del Proyecto - Smart Contract
+# Platzi Punk - Smart Contract
 
 Breve descripción o resumen del proyecto.
 
