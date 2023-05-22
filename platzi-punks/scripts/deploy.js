@@ -1,32 +1,23 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
-const hre = require("hardhat");
-
-async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
-
-  const lockedAmount = hre.ethers.utils.parseEther("0.001");
-
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
-
-  await lock.deployed();
-
-  console.log(
-    `Lock with ${ethers.utils.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  );
-}
-
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+// Despliegue es una función asincrona
+const deploy = async () => {
+    // getSigners() trae la información que traemos desde nuestra llave privada
+    // deployer es un objeto que nos permite desplegar contratos a la red que tengamos configurada
+    const [deployer] = await ethers.getSigners();
+  
+    console.log("Deploying contract with the account:", deployer.address);
+  
+    // Definimos PlatziPunks en el contexto
+    const PlatziPunks = await ethers.getContractFactory("PlatziPunks");
+    // Instancia del contracto desplegado
+    const deployed = await PlatziPunks.deploy();
+  
+    console.log("Platzi Punks is deployed at:", deployed.address);
+  };
+  
+  // Llamando la función deploy()
+  deploy()
+    .then(() => process.exit(0))
+    .catch((error) => {
+      console.log(error);
+      process.exit(1);
+    });
