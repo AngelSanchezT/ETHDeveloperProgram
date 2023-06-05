@@ -12,6 +12,8 @@ const deploy = async () => {
     const deployed = await PlatziPunks.deploy();
   
     console.log("Platzi Punks is deployed at:", deployed.address);
+
+    
   };
   
   // Llamando la función deploy()
