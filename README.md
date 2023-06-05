@@ -23,6 +23,7 @@ Aquí se listan los proyectos/Retos desarrollados durante el programa:
 
 - [✅ Crowdfunding](./crowdfunding/)
 - [🔴 Platzi-Punks](./platzi-punks/)
+- [🔴 Platzi-Punks-Interface](./platzi-punks-interface/)
 - [🔴 Startnet-Learn](./starknet-learn/)
 - [🔴 Counter Web3](https://platzi.com/clases/6438-prework-ethereum/59471-ejecutando-tu-aplicacion-descentralizada/) [LINK2](https://platzi.com/clases/6438-prework-ethereum/61281-conoce-y-evalua-los-proyectos-de-este-curso/)
 
